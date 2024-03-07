@@ -16,7 +16,7 @@ const Payment = () => {
             let config = {
                 method: 'get',
                 maxBodyLength: Infinity,
-                url: 'http://jivansathi.vercel.app/api/requests',
+                url: 'https://jivansathi.vercel.app/api/requests',
               };
               axios.request(config)
               .then((response) => {
@@ -37,7 +37,7 @@ const Payment = () => {
     const handleApproval = async (cId) => {
         try {
 
-            await axios.get(`http://jivansathi.vercel.app/api/accept/${cId}`);
+            await axios.get(`https://jivansathi.vercel.app/api/accept/${cId}`);
 
             const updatedData = users.filter(user => user.user_id !== cId);
 
@@ -55,7 +55,7 @@ const Payment = () => {
     const handleReject = async (cId) => {
         try {
 
-            await axios.get(`http://jivansathi.vercel.app/api/reject/${cId}`)
+            await axios.get(`https://jivansathi.vercel.app/api/reject/${cId}`)
 
             const updatedData = users.filter(user => user.user_id !== cId);
 
