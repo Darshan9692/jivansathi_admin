@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Login from './pages/Login';
 import Payment from './pages/Payment';
 import { Routes, Route } from 'react-router-dom';
@@ -6,6 +6,13 @@ import AdminPanel from './pages/AdminPanel';
 import Extra from './pages/Extra';
 
 const App = () => {
+
+  const [role, setRole] = useState('');
+
+  useEffect(() => {
+    setRole(localStorage.getItem('role'));
+  }, [])
+
   return (
     <>
       <Routes>
@@ -18,7 +25,7 @@ const App = () => {
           }
         />
 
-        {localStorage.getItem('role') && localStorage.getItem('role') === 'admin' ? (
+        {role === 'admin' ? (
           <>
             <Route
               path='/Admin'
