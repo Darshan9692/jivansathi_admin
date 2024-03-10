@@ -18,7 +18,7 @@ const App = () => {
           }
         />
 
-        {localStorage.getItem('role') === 'admin' ? (
+        {localStorage.getItem('role') && localStorage.getItem('role') === 'admin' ? (
           <>
             <Route
               path='/Admin'

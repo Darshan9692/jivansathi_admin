@@ -32,7 +32,7 @@ const Login = () => {
             localStorage.setItem('role', user.role)
             setTimeout(() => {
                 user.role === "admin" ? navigate('/Admin') : navigate('/')
-            }, 2000)
+            }, 4000)
 
         } catch (error) {
             toast.error("Unable to login");
