@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import Login from './pages/Login';
 import Payment from './pages/Payment';
 import { Routes, Route } from 'react-router-dom';
 import AdminPanel from './pages/AdminPanel';
 import Extra from './pages/Extra';
+import AuthContext from './pages/AuthContext';
 
 const App = () => {
 
-  const [role, setRole] = useState('');
-
-  useEffect(() => {
-    setRole(localStorage.getItem('role'));
-  }, [])
+  const { role } = useContext(AuthContext);
+  console.log(role);
 
   return (
     <>
@@ -25,7 +23,7 @@ const App = () => {
           }
         />
 
-        {role === 'admin' ? (
+        {role && role === 'admin' ? (
           <>
             <Route
               path='/Admin'

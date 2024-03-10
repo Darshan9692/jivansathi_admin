@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
     Card,
     Input,
@@ -7,9 +7,10 @@ import {
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, Toaster } from 'react-hot-toast';
+import AuthContext, { AuthProvider } from "./AuthContext";
 
 const Login = () => {
-
+    const { role, updateUserRole } = useContext(AuthContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -30,6 +31,7 @@ const Login = () => {
             localStorage.setItem('token', token);
             localStorage.setItem('id', user.user_id);
             localStorage.setItem('role', user.role);
+            updateUserRole(user.role);
             setTimeout(() => {
                 user.role === "admin" ? navigate('/Admin') : navigate('/')
             }, 1000);
@@ -85,7 +87,7 @@ const Login = () => {
                     <img src="/Login/bg.webp" alt="bg" className="absolute hidden lg:inline h-screen w-screen -z-10 opacity-10" />
                     <div className="text-4xl md:text-5xl lg:text-6xl text-black mb-6 font-bold text-center">Already logged in</div>
                     {
-                        localStorage.getItem('role') === "admin" ? (<Link to="/Admin" className="text-2xl mb-2 mt-10 lg:mt-20">Click here to Admin Panel</Link>) : (<Link to="/" className="text-2xl mb-2 mt-10 lg:mt-20">Click here to Login</Link>)
+                        role === "admin" ? (<Link to="/Admin" className="text-2xl mb-2 mt-10 lg:mt-20">Click here to Admin Panel</Link>) : (<Link to="/" className="text-2xl mb-2 mt-10 lg:mt-20">Click here to Login</Link>)
                     }
                 </Card>
             )}
