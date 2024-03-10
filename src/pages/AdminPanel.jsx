@@ -13,29 +13,30 @@ const AdminPanel = () => {
 
     const navigate = useNavigate();
 
-    // const handleLogout = async () => {
-    //     try {
-    //         const response = await axios.get(`https://backend.qwiksavings.com/api/logout`, {
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //         });
-    //         if (response && response.status === 200) {
-    //             alert(response.data.message);
-    //             localStorage.clear();
-    //             navigate("/");
-    //         } else {
-    //             alert("Logout failed. Please try again.");
-    //         }
-    //     } catch (error) {
-    //         if (error.response && error.response.data && error.response.data.message) {
-    //             alert(error.response.data.message);
-    //         } else {
-    //             alert("An error occurred. Please try again later.");
-    //         }
-    //         console.error(error);
-    //     }
-    // }
+    const handleLogout = async () => {
+        try {
+            const response = await axios.get(`https://jivansathi.vercel.app/api/logout`, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            if (response && response.status === 200) {
+                alert(response.data.message);
+                localStorage.clear();
+                navigate("/");
+            } else {
+                alert("Logout failed. Please try again.");
+            }
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.message) {
+                alert(error.response.data.message);
+            } else {
+                alert("An error occurred. Please try again later.");
+            }
+            console.error(error);
+        }
+    }
+
     return (
 
         <div>

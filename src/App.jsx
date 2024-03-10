@@ -3,7 +3,7 @@ import Login from './pages/Login';
 import Payment from './pages/Payment';
 import { Routes, Route } from 'react-router-dom';
 import AdminPanel from './pages/AdminPanel';
-import Home from './pages/Home';
+import Extra from './pages/Extra';
 
 const App = () => {
   return (
@@ -13,37 +13,33 @@ const App = () => {
           path='/'
           element={
             <>
-              <Home />
-            </>
-          }
-        />
-
-        <Route
-          path='/login'
-          element={
-            <>
               <Login />
             </>
           }
         />
 
-        <Route
-          path='/admin'
-          element={
-            <>
-              <AdminPanel />
-            </>
-          }
-        />
+        {localStorage.getItem('role') === 'admin' ? (
+          <>
+            <Route
+              path='/Admin'
+              element={<AdminPanel />}
+            />
+            <Route
+              path='/Admin/payment'
+              element={<Payment />}
+            />
+          </>
+        ) : <>
+          <Route
+            path='/Admin'
+            element={<Extra />}
+          />
+          <Route
+            path='/Admin/payment'
+            element={<Extra />}
+          />
+        </>}
 
-        <Route
-          path='/admin/payment'
-          element={
-            <>
-              <Payment />
-            </>
-          }
-        />
       </Routes>
     </>
   )
