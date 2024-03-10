@@ -29,10 +29,10 @@ const Login = () => {
 
             localStorage.setItem('token', token);
             localStorage.setItem('id', user.user_id);
-            localStorage.setItem('role', user.role)
+            localStorage.setItem('role', user.role);
             setTimeout(() => {
                 user.role === "admin" ? navigate('/Admin') : navigate('/')
-            }, 4000)
+            }, 1000);
 
         } catch (error) {
             toast.error("Unable to login");
@@ -85,7 +85,7 @@ const Login = () => {
                     <img src="/Login/bg.webp" alt="bg" className="absolute hidden lg:inline h-screen w-screen -z-10 opacity-10" />
                     <div className="text-4xl md:text-5xl lg:text-6xl text-black mb-6 font-bold text-center">Already logged in</div>
                     {
-                        user.role === "admin" ? (<Link to="/Admin" className="text-2xl mb-2 mt-10 lg:mt-20">Click here to Admin Panel</Link>) : (<Link to="/" className="text-2xl mb-2 mt-10 lg:mt-20">Click here to Login</Link>)
+                        localStorage.getItem('role') && localStorage.getItem('role') === "admin" ? (<Link to="/Admin" className="text-2xl mb-2 mt-10 lg:mt-20">Click here to Admin Panel</Link>) : (<Link to="/" className="text-2xl mb-2 mt-10 lg:mt-20">Click here to Login</Link>)
                     }
                 </Card>
             )}
