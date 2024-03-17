@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import AdminPanel from './pages/AdminPanel';
 import Extra from './pages/Extra';
 import AuthContext from './pages/AuthContext';
+import Users from './pages/Users';
 
 const App = () => {
 
@@ -33,6 +34,10 @@ const App = () => {
               path='/Admin/payment'
               element={<Payment />}
             />
+            <Route
+              path='/Admin/users'
+              element={<Users />}
+            />
           </>
         ) : <>
           <Route
@@ -41,6 +46,10 @@ const App = () => {
           />
           <Route
             path='/Admin/payment'
+            element={<Extra />}
+          />
+          <Route
+            path='/Admin/users'
             element={<Extra />}
           />
         </>}

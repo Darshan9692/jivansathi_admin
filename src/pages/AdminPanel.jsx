@@ -3,6 +3,7 @@ import { Button } from "@material-tailwind/react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Payment from './Payment';
+import Users from './Users';
 
 const AdminPanel = () => {
 
@@ -53,9 +54,18 @@ const AdminPanel = () => {
                 >
                     Payments
                 </button>
+                <button
+                    className={`bg-white py-2 px-5 m-4 md:m-4 hover:text-black hover:border-2 hover:border-black duration-400 
+          ${selectedButton === 'Users' ? 'text-black border-2 border-black' : 'text-gray-800 border-2 border-transparent'}  
+          `}
+                    onClick={() => handleButtonClick('Users')}
+                >
+                    Users
+                </button>
             </div>
             {
-                selectedButton === 'Payment' && <Payment /> 
+                selectedButton === 'Payment' && <Payment /> ||
+                selectedButton === 'Users' && <Users/>
             }
         </div>
     )
